@@ -8,7 +8,6 @@ import PriceTag from "./PriceTag";
 import Favorite from "./Favorite";
 
 const MainCard = ({ cardData }) => {
-  
   useEffect(() => {
     // Log the cardData to the console
     console.log("Card Data:", cardData);
@@ -18,7 +17,7 @@ const MainCard = ({ cardData }) => {
       <LinearGradient
         style={styles.CardGradientLayout}
         locations={[0, 1]}
-        colors={["#ffff", "rgba(255, 255, 255, 0)"]}
+        colors={["#ffff", "rgb(240, 240, 240)"]}
       >
         <Pressable
           style={styles.CardPressable}
@@ -29,13 +28,19 @@ const MainCard = ({ cardData }) => {
           <Image
             style={styles.CardImg}
             contentFit="cover"
-            source={require("../../assets/images/car-images/car.png")}
+            source={{ uri: cardData.img }}
           />
           <View style={styles.rightSection}>
             <View>
               <View>
-                <RatingSection rating={cardData.rating} noOfReviews={cardData.noOfReview} />
-                <CardTitle title={cardData.title} city={`${cardData.city}, Pakistan`} />
+                <RatingSection
+                  rating={cardData.rating}
+                  noOfReviews={cardData.noOfReview}
+                />
+                <CardTitle
+                  title={cardData.title}
+                  city={`${cardData.city}, Pakistan`}
+                />
               </View>
               <FeatureSection iconsData={cardData.features} />
             </View>
@@ -56,20 +61,13 @@ const styles = StyleSheet.create({
   sectionLayout: {
     minHeight: 200,
     marginTop: 21,
-    width: 400,
+    width: 350,
     flexDirection: "row",
-    marginHorizontal: 10,
-    paddingHorizontal: 10,
-    shadowColor: "#000", // Color of the shadow
-    shadowOffset: {
-      width: 0, // Horizontal distance of the shadow
-      height: 2, // Vertical distance of the shadow
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    marginRight: 10,
+   
+    borderRadius: 20,
+
     overflow: "hidden",
-    elevation: 1,
-    // borderRadius: 7,
   },
 
   // Styles for the LinearGradient component

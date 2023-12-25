@@ -5,8 +5,9 @@ import {
   Image,
   TextInput,
   Pressable,
+  ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import {
   Color,
   Border,
@@ -24,25 +25,49 @@ import FeatureSection from "../components/card/featureSection/FeatureSection";
 import PriceTag from "../components/card/PriceTag";
 import Favorite from "../components/card/Favorite";
 import Card from "../components/card/Cards";
-
+import cardDataJSON from "../data/carCard.json";
 const CarHomeScreen = () => {
+  const [cardData, setCardData] = useState(cardDataJSON);
   return (
-    <View style={styles.container}>
-      <Searchbar />
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.contentContainer}
+    >
+      <View style={styles.container}>
+        <Searchbar placeholder="Find your perfect car..." />
 
-      <CardHeading heading="Deal Near You" subHeading={213} />
+        <CardHeading heading="Deal Near You" subHeading="213 Cars in lahore" />
 
-      <Card />
-    </View>
+        <Card cardData={cardData} />
+
+        <CardHeading heading="Top Rated Cars" subHeading="213 Cars in lahore" />
+
+        <Card cardData={cardData} />
+
+        <CardHeading heading="Best Cars" subHeading="213 Cars in lahore" />
+
+        <Card cardData={cardData} />
+      </View>
+    </ScrollView>
   );
 };
 
 export default CarHomeScreen;
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    backgroundColor: "white", // Ensure the ScrollView background is white
+  },
+  contentContainer: {
+    paddingBottom: 20,
+    
+    backgroundColor: "white", // Ensure the background behind cards is white
+  },
   container: {
     flex: 1,
     backgroundColor: Color.backgroundColor,
     alignItems: "center",
+    marginHorizontal: 15,
   },
 });

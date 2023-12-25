@@ -10,7 +10,7 @@ const CardHeading = ({heading,subHeading}) => {
        {heading}
       </Text>
       <Text style={styles.SubHeading}>
-        {subHeading} cars in Lahore
+        {subHeading} 
       </Text>
     </View>
     <Pressable onPress={()=>{
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     flexDirection: "row",
     justifyContent:'space-between',
-    width:'90%',
+    width:'100%',
     marginTop:21
   },
   Heading: {

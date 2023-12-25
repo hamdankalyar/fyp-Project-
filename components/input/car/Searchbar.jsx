@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import React from 'react';
 import { Color, Border, FontFamily, FontSize, Padding } from "../../../constants/GlobalStyles";
 
-const Searchbar = () => {
+const Searchbar = ({placeholder}) => {
   return (
     <View style={styles.searchBar}>
         <Image
@@ -10,7 +10,7 @@ const Searchbar = () => {
           source={require("../../../assets/icons/searchicon.png")}
         />
         <TextInput
-          placeholder="Find your perfect car..."
+          placeholder={placeholder}
           style={styles.input}
         />
         <Image
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
       backgroundColor: Color.colorWhitesmoke,
       borderColor: Color.colorGainsboro,
       borderWidth: 0.8,
-      width: "90%",
+      width: "100%",
       height: 48,
       flexDirection: 'row',
       alignItems: 'center', // Align items vertically in the center

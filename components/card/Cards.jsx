@@ -3,9 +3,9 @@ import { View, FlatList, Text, ActivityIndicator } from "react-native";
 
 import MainCard from "./MainCard";
 
-import cardDataJSON from "../../data/carCard.json";
-const Card = () => {
-  const [cardData, setCardData] = useState(cardDataJSON);
+
+const Card = ({cardData}) => {
+  
 
   return (
     <FlatList
