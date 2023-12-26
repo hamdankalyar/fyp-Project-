@@ -14,6 +14,7 @@ import SplashScreen from "./screens/SplashScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import HeaderLeft from "./components/button/ScreenHeaderLeft";
 import CarHomeScreen from "./screens/CarHomeScreen";
+import MainScreen from "./screens/MainScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,12 +28,10 @@ export default function App() {
     "SF-Pro-Text-Semibold": require("./assets/font/SF-Pro-Text-Semibold.otf"),
   });
 
-  
   const [isSplashLoading, setIsSplashLoading] = useState(true);
 
   useEffect(() => {
     if (fontsLoaded && isSplashLoading) {
-      
       setTimeout(() => {
         setIsSplashLoading(false);
       }, 4000); // For example, 3000ms = 3 seconds
@@ -40,85 +39,86 @@ export default function App() {
   }, [fontsLoaded, isSplashLoading]);
 
   if (!fontsLoaded || isSplashLoading) {
-    return <SplashScreen onAnimationComplete={() => setIsSplashLoading(false)} />;
+    return (
+      <SplashScreen onAnimationComplete={() => setIsSplashLoading(false)} />
+    );
   }
   return (
     <React.Fragment>
       <SafeAreaView style={styles.container}>
-      <StatusBar style="dark" />
-      <NativeBaseProvider>
-        <NavigationContainer>
-        <Stack.Navigator
-              initialRouteName="CarHomepage"
+        <StatusBar style="dark" />
+        <NativeBaseProvider>
+          <NavigationContainer>
+            <Stack.Navigator
+              initialRouteName="Mainpage"
               screenOptions={{
                 headerStyle: {
                   backgroundColor: Colors.backgroundColor,
                   elevation: 0, // Removes elevation shadow on Android
                   shadowOpacity: 0, // Removes shadow on iOS // Set your desired color here
-                  borderBottomWidth: 0, 
+                  borderBottomWidth: 0,
                 },
                 headerTintColor: Colors.backgroundColor, // This changes the color of the back button and title
               }}
             >
-<Stack.Screen
-    name="Welcome"
-    component={WelcomeScreen}
-    options={{ headerShown: false }}
-  />
-  <Stack.Screen
-    name="SignUpScreen"
-    component={SignUpScreen}
-    options={{
-      headerTitle:'',
-      headerLeft:()=>(
-        <HeaderLeft/>
-      )
-    }}
-  />
-  <Stack.Screen
-    name="LoginScreen"
-    component={LoginScreen}
-    options={{
-      title: "",
-      headerBackVisible: false,
-    }}
-  />
-  <Stack.Screen
-    name="HomeScreen"
-    component={HomeScreen}
-    options={{
-      title: "Home",
-    }}
-  />
-  <Stack.Screen
-    name="DetailsScreen"
-    component={DetailScreen}
-    options={{
-      title: "Package Details",
-      headerShown: false,
-    }}
-  />
-  <Stack.Screen
-    name="CarHomepage"
-    component={CarHomeScreen}
-    options={{ headerShown: false }}
-  />
-</Stack.Navigator>
-
-        </NavigationContainer>
-      </NativeBaseProvider>
+              <Stack.Screen
+                name="Welcome"
+                component={WelcomeScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="SignUpScreen"
+                component={SignUpScreen}
+                options={{
+                  headerTitle: "",
+                  headerLeft: () => <HeaderLeft />,
+                }}
+              />
+              <Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+                options={{
+                  title: "",
+                  headerBackVisible: false,
+                }}
+              />
+              <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+                options={{
+                  title: "Home",
+                }}
+              />
+              <Stack.Screen
+                name="DetailsScreen"
+                component={DetailScreen}
+                options={{
+                  title: "Package Details",
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="CarHomepage"
+                component={CarHomeScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Mainpage"
+                component={MainScreen}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </NativeBaseProvider>
       </SafeAreaView>
     </React.Fragment>
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.backgroundColor,
-    marginTop:50
-    
+    marginTop: 50,
   },
 });

@@ -4,12 +4,12 @@ import React from "react";
 const Favorite = () => {
   return (
     <Pressable
+      style={styles.favorite}
       onPress={() => {
         console.log("added to favorite");
       }}
     >
       <Image
-        style={styles.favorite}
         contentFit="cover"
         source={require("../../assets/icons/heart.png")}
       />
@@ -21,6 +21,7 @@ export default Favorite;
 
 const styles = StyleSheet.create({
   favorite: {
+   
     alignSelf: "flex-end",
   },
 });

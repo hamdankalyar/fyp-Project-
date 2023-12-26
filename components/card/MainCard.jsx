@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   rightSection: {
-    paddingHorizontal: 14,
+    paddingLeft: 14,
     paddingVertical: 10,
   },
   // Styles for the Image components
